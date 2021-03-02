@@ -86,4 +86,34 @@ public class Solo {
     public void setAcidez(Double acidez) {
         this.acidez = acidez;
     }
+
+    public int valorIdealFosforo(Solo solo){
+        if(solo.tipoSolo == 1) return 9;
+        else return 12;
+    }
+
+    public Double valorIdealPotassio(Solo solo){
+        if(solo.tipoSolo == 1) return 0.35;
+        else return 0.25;
+    }
+
+    public int valorIdealCalcio(Solo solo){
+        if(solo.tipoSolo == 1) return 6;
+        else return 4;
+    }
+
+    public Double valorIdealMagnesio(Solo solo){
+        if(solo.tipoSolo == 1) return 1.5;
+        else return 1.0;
+    }
+
+    public int valorIdealEnxofre(Solo solo){
+        if(solo.tipoSolo == 1) return 9;
+        else return 6;
+    }
+
+    public int valorIdealAluminio(){
+        return 0;
+    }
+
 }
