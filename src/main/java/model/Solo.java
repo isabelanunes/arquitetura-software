@@ -87,6 +87,21 @@ public class Solo {
         this.acidez = acidez;
     }
 
+    /* O caso de tipo de solo diferente de 1 e 2
+    deve ser tratado no momento de instaciar o atributo tipo solo. */
+
+  /*  public int valorIdealFosforo(Solo solo){
+        switch(solo.tipoSolo){
+            case 1:
+                return 9;
+            case 2:
+                return 12;
+            default:
+                System.out.println("Tipo de solo inválido");
+        }
+
+    } */
+
     public int valorIdealFosforo(Solo solo){
         if(solo.tipoSolo == 1) return 9;
         else return 12;
