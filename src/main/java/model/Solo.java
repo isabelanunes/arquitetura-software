@@ -124,7 +124,7 @@ public class Solo {
 
     public int valorIdealEnxofre(Solo solo){
         if(solo.tipoSolo == 1) return 9;
-        else return 6;
+        else return Exception;
     }
 
     public int valorIdealAluminio(){
