@@ -11,124 +11,124 @@ package model;
  * @author Isabela Nunes
  */
 public class Solo {
-    private int tipoSolo;
-    private Double fosforo;
-    private Double potassio;
-    private Double calcio;
-    private Double magnesio;
-    private Double enxofre;
-    private Double aluminio;
-    private Double acidez;
+    private TexturaSolo textura;
+    private double fosforo;
+    private double potassio;
+    private double calcio;
+    private double magnesio;
+    private double enxofre;
+    private double aluminio;
+    private double acidez;
 
     public Solo() {
     }
 
-    public int getTipoSolo() {
-        return tipoSolo;
-    }
-
-    public void setTipoSolo(int tipoSolo) {
-        this.tipoSolo = tipoSolo;
-    }
-
-    public Double getFosforo() {
-        return fosforo;
-    }
-
-    public void setFosforo(Double fosforo) {
+    public Solo(TexturaSolo textura, double fosforo, double potassio, double calcio, double magnesio, double enxofre, double aluminio, double acidez) {
+        this.textura = textura;
         this.fosforo = fosforo;
-    }
-
-    public Double getPotassio() {
-        return potassio;
-    }
-
-    public void setPotassio(Double potassio) {
         this.potassio = potassio;
-    }
-
-    public Double getCalcio() {
-        return calcio;
-    }
-
-    public void setCalcio(Double calcio) {
         this.calcio = calcio;
-    }
-
-    public Double getMagnesio() {
-        return magnesio;
-    }
-
-    public void setMagnesio(Double magnesio) {
         this.magnesio = magnesio;
-    }
-
-    public Double getEnxofre() {
-        return enxofre;
-    }
-
-    public void setEnxofre(Double enxofre) {
         this.enxofre = enxofre;
-    }
-
-    public Double getAluminio() {
-        return aluminio;
-    }
-
-    public void setAluminio(Double aluminio) {
         this.aluminio = aluminio;
-    }
-
-    public Double getAcidez() {
-        return acidez;
-    }
-
-    public void setAcidez(Double acidez) {
         this.acidez = acidez;
     }
-
-    /* O caso de tipo de solo diferente de 1 e 2
-    deve ser tratado no momento de instaciar o atributo tipo solo. */
-
-  /*  public int valorIdealFosforo(Solo solo){
-        switch(solo.tipoSolo){
-            case 1:
-                return 9;
-            case 2:
-                return 12;
+    
+    public double getValorIdealFosforo() {
+        switch(this.textura){
+                   case ARGILOSO:
+                       return 9.0;
+                   case TEXTURA_MEDIA:
+                       return 12.0;
+                   default:
+                       return 0.0;
+        }    
+    }
+    
+     public double getValorIdealPotassio(){
+        switch(this.textura){
+            case ARGILOSO:
+                return 0.35;
+            case TEXTURA_MEDIA:
+                return 0.25;
             default:
-                System.out.println("Tipo de solo inválido");
+                return 0.0;
         }
-
-    } */
-
-    public int valorIdealFosforo(Solo solo){
-        if(solo.tipoSolo == 1) return 9;
-        else return 12;
     }
 
-    public Double valorIdealPotassio(Solo solo){
-        if(solo.tipoSolo == 1) return 0.35;
-        else return 0.25;
+    public double getValorIdealCalcio(){
+        switch (this.textura){
+            case ARGILOSO:
+                return 6.0;
+            case TEXTURA_MEDIA:
+                return 4.0;
+            default:
+                return 0.0;
+        }
     }
 
-    public int valorIdealCalcio(Solo solo){
-        if(solo.tipoSolo == 1) return 6;
-        else return 4;
+    public double getValorIdealMagnesio(){
+        switch (this.textura){
+            case ARGILOSO:
+                return 1.5;
+            case TEXTURA_MEDIA:
+                return 1.0;
+            default:
+                return 0.0;
+        }
+    }
+     
+
+    public double getValorIdealEnxofre(){
+        switch (this.textura){
+            case ARGILOSO:
+                return 9.0;
+            case TEXTURA_MEDIA:
+                return 6.0;
+            default:
+                return 0.0;
+        }
     }
 
-    public Double valorIdealMagnesio(Solo solo){
-        if(solo.tipoSolo == 1) return 1.5;
-        else return 1.0;
+    public double getValorIdealAluminio(){
+        return 0.0;
     }
 
-    public int valorIdealEnxofre(Solo solo){
-        if(solo.tipoSolo == 1) return 9;
-        else return Exception;
+    public double getSCmol() {
+        return (this.potassio + this.calcio + this.magnesio);
     }
 
-    public int valorIdealAluminio(){
-        return 0;
+    public double getCTCCmol() {
+        return (this.potassio + this.calcio + this.magnesio + this.acidez);
     }
+
+    public double getVPercentual () {
+        
+        if (this.getSCmol() > 0 && this.getCTCCmol() > 0) {
+            return this.getSCmol() / this.getCTCCmol() * 100;
+        } else {
+            return 0.0;
+        }
+    }
+
+    public double getMOPercentual(double mo) {
+        if (mo > 0) {
+            return mo / 10;
+
+        } else {
+            return 0.0;
+        }
+    }
+
+    public double getCarbono(double moPercentual) {
+        
+        if (moPercentual > 0) {
+            return moPercentual / 1.72 * 10;
+            
+        } else {
+            return 0.0;
+        }
+    }
+
 
 }
