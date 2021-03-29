@@ -18,12 +18,14 @@ public class ItemCorrecaoFosforoFornece {
         this.descricao_item = descricao_item;
     }
 
-    public void setValor(double valor) {
-        this.valor = valor;
+    public double getValor() {
+        return valor;
     }
 
-    public void setDescricao_item(Nutrientes descricao_item) {
-        this.descricao_item = descricao_item;
+    public Nutrientes getDescricao_item() {
+        return descricao_item;
     }
+
+   
     
 }

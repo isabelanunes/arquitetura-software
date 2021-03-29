@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.text.DecimalFormat;
+
 /**
  *
  * @author Isabela Nunes
@@ -57,10 +59,9 @@ public class CorrecaoFosforo {
     
     public double quantidadeAplicarFosforo(){
         double necessidadeAdicionar = this.teorFosforoAtingir - this.solo.getFosforo();
-        double quantidadeAplicar = necessidadeAdicionar * 2 * 2.29 * 100 /
-                this.eficienciaFosforo / 100 * 100 / this.valorFonteFosforo;
-
-        if (necessidadeAdicionar < 0.01)
+        double quantidadeAplicar = (necessidadeAdicionar * 2 * 2.29) /
+                (this.eficienciaFosforo / 100) * (100 / this.valorFonteFosforo());
+        if (necessidadeAdicionar > 0.01)
             return quantidadeAplicar;
         else
             return 0.0;
@@ -77,11 +78,11 @@ public class CorrecaoFosforo {
                 return new ItemCorrecaoFosforoFornece(valorItem, Nutrientes.ENXOFRE);
             case MULTIF_MAGNESIANO:
                 valorItem = this.quantidadeAplicarFosforo()*0.11;
-                return new ItemCorrecaoFosforoFornece(valorItem, Nutrientes.ENXOFRE);
+                return new ItemCorrecaoFosforoFornece(valorItem, Nutrientes.ENXOFRE);     
             default:
                 return null;
         }        
-    }
+    } 
     
     public ItemCorrecaoFosforoFornece correcaoFosforoFornece2(){
         double valorItem;
@@ -128,7 +129,7 @@ public class CorrecaoFosforo {
     }
     
     public double custoAlqueire(){
-        return (this.valorFonteFosforo * this.quantidadeAplicarFosforo()/1000)/2.42;
+        return (this.valorFonteFosforo * this.quantidadeAplicarFosforo()/1000);
     }
     
 }
