@@ -34,6 +34,10 @@ public class Solo {
         this.acidez = acidez;
     }
     
+    public double getFosforo(){
+        return this.fosforo;
+    }
+    
     public double getValorIdealFosforo() {
         switch(this.textura){
                    case ARGILOSO:
