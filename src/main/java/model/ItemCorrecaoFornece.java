@@ -9,11 +9,11 @@ package model;
  *
  * @author Isabela Nunes
  */
-public class ItemCorrecaoFosforoFornece {
+public class ItemCorrecaoFornece {
     private double valor;
     private Nutrientes descricao_item;
 
-    public ItemCorrecaoFosforoFornece(double valor, Nutrientes descricao_item) {
+    public ItemCorrecaoFornece(double valor, Nutrientes descricao_item) {
         this.valor = valor;
         this.descricao_item = descricao_item;
     }
@@ -25,7 +25,5 @@ public class ItemCorrecaoFosforoFornece {
     public Nutrientes getDescricao_item() {
         return descricao_item;
     }
-
-   
     
 }

@@ -38,6 +38,22 @@ public class Solo {
         return this.fosforo;
     }
     
+    public double getPotassio(){
+        return this.potassio;
+    }
+    
+    public double getCalcio(){
+        return this.calcio;
+    }
+    
+    public double getMagnesio(){
+        return this.magnesio;
+    }
+    
+    public double getAcidez(){
+        return this.acidez;
+    }
+    
     public double getValorIdealFosforo() {
         switch(this.textura){
                    case ARGILOSO:
