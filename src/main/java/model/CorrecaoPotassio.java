@@ -13,16 +13,19 @@ public class CorrecaoPotassio {
     private double participacaoPotassioDesejada;
     private Solo solo;
     private FontesPotassio fontePotassio;
+    private double valorFontePotassio;
 
-    public CorrecaoPotassio(double participacaoPotassioDesejada, Solo solo, FontesPotassio fontePotassio) {
+    public CorrecaoPotassio(double participacaoPotassioDesejada, Solo solo, FontesPotassio fontePotassio, double valorFontePotassio) {
         this.participacaoPotassioDesejada = participacaoPotassioDesejada;
         this.solo = solo;
         this.fontePotassio = fontePotassio;
+        this.valorFontePotassio = valorFontePotassio;
     }
     
     public double participacaoPotassioAtual(){
         double participacao = this.solo.getPotassio() / 
-                (this.solo.getCalcio() + this.solo.getMagnesio() + this.solo.getAcidez())*100;
+               (this.solo.getCalcio() + this.solo.getMagnesio() + this.solo.getPotassio()
+                + this.solo.getAcidez())*100;
         return participacao;
     }
     
@@ -52,16 +55,17 @@ public class CorrecaoPotassio {
     
     public double quantidadeAplicarPotassio(){
         double necessidadeAdicionar = this.solo.getPotassio()*
-                (this.participacaoPotassioDesejada/this.participacaoPotassioAtual())
+                this.participacaoPotassioDesejada/this.participacaoPotassioAtual()
                 - this.solo.getPotassio();
-        double flag = necessidadeAdicionar;
         if(necessidadeAdicionar<0.01)
-            flag = 0.0;
-        return flag*39.1*10*2*1.2*100/0.85/100*100/this.valorFontePotassio();
+            return 0.0;
+        else
+            return necessidadeAdicionar * 39.1 * 10 * 2 * 1.2 * 100 / 0.85 /100 *100 
+                    / this.valorFontePotassio();
     }
     
-    public ItemCorrecaoFornece correcaoFosforoFornece1(){
-        double valorItem;
+    public ItemCorrecaoFornece correcaoPotassioFornece1(){
+        double valorItem = 0;
         switch (this.fontePotassio){
             case SULFATO_POTASSIO:
                 valorItem = this.quantidadeAplicarPotassio()*0.17;
@@ -74,7 +78,7 @@ public class CorrecaoPotassio {
         }        
     }
     
-    public ItemCorrecaoFornece correcaoFosforoFornece2(){
+    public ItemCorrecaoFornece correcaoPotassioFornece2(){
         double valorItem;
         switch (this.fontePotassio){
             case SULFATO_POTASSIO_MAGNESIO:
@@ -86,7 +90,7 @@ public class CorrecaoPotassio {
     } 
     
     public double custoAlqueirePotassio(){
-        return (this.valorFontePotassio() * this.quantidadeAplicarPotassio()/1000);
+        return (this.valorFontePotassio * this.quantidadeAplicarPotassio()/1000);
     }
     
 }

@@ -147,6 +147,39 @@ public class CorrecaoFosforoTest {
         Solo solo = new Solo(TexturaSolo.ARGILOSO, 8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 0.0);
         CorrecaoFosforo correcaoFosforo = new CorrecaoFosforo(12, FontesFosforo.SUPERFOSFATO_SIMPLES, 70, 1260, solo);
         Assert.assertEquals(156.17, correcaoFosforo.custoAlqueireFosforo(),0.1);
+        
+        correcaoFosforo = new CorrecaoFosforo(12, FontesFosforo.SUPERFOSFATO_TRIPLO, 70, 1260, solo);
+        Assert.assertEquals(68.56, correcaoFosforo.custoAlqueireFosforo(),0.1);
+        
+        correcaoFosforo = new CorrecaoFosforo(12, FontesFosforo.MAP, 70, 1260, solo);
+        Assert.assertEquals(58.56, correcaoFosforo.custoAlqueireFosforo(),0.1);
+        
+        correcaoFosforo = new CorrecaoFosforo(12, FontesFosforo.DAP, 70, 1260, solo);
+        Assert.assertEquals(62.46, correcaoFosforo.custoAlqueireFosforo(),0.1);
+        
+        correcaoFosforo = new CorrecaoFosforo(12, FontesFosforo.YOORIN, 70, 1260, solo);
+        Assert.assertEquals(156.17, correcaoFosforo.custoAlqueireFosforo(),0.1);
+        
+        correcaoFosforo = new CorrecaoFosforo(12, FontesFosforo.FOSFATO_ARAD, 70, 1260, solo);
+        Assert.assertEquals(85.18, correcaoFosforo.custoAlqueireFosforo(),0.1);
+        
+        correcaoFosforo = new CorrecaoFosforo(12, FontesFosforo.FOSFATO_GAFSA, 70, 1260, solo);
+        Assert.assertEquals(96.93, correcaoFosforo.custoAlqueireFosforo(),0.1);
+        
+        correcaoFosforo = new CorrecaoFosforo(12, FontesFosforo.FOSFATO_DAOUI, 70, 1260, solo);
+        Assert.assertEquals(87.84, correcaoFosforo.custoAlqueireFosforo(),0.1);
+        
+        correcaoFosforo = new CorrecaoFosforo(12, FontesFosforo.FOSF_PATOS_MINAS, 70, 1260, solo);
+        Assert.assertEquals(117.12, correcaoFosforo.custoAlqueireFosforo(),0.1);
+        
+        correcaoFosforo = new CorrecaoFosforo(12, FontesFosforo.ESCORIA_THOMAS, 70, 1260, solo);
+        Assert.assertEquals(151.94, correcaoFosforo.custoAlqueireFosforo(),0.1);
+        
+        correcaoFosforo = new CorrecaoFosforo(12, FontesFosforo.ACIDO_FOSFORICO, 70, 1260, solo);
+        Assert.assertEquals(54.05, correcaoFosforo.custoAlqueireFosforo(),0.1);
+        
+        correcaoFosforo = new CorrecaoFosforo(12, FontesFosforo.MULTIF_MAGNESIANO, 70, 1260, solo);
+        Assert.assertEquals(156.17, correcaoFosforo.custoAlqueireFosforo(),0.1);
 
     }
     
