@@ -26,8 +26,8 @@ public class CorrecaoFosforo {
         this.solo = solo;
     }
     
-    public double valorFonteFosforo(){
-        switch(this.fonteFosforo){
+    public double valorFonteFosforo(FontesFosforo fontesFosforo){
+        switch(fonteFosforo){
             case SUPERFOSFATO_SIMPLES:
                 return 18.0;
             case SUPERFOSFATO_TRIPLO:
@@ -60,69 +60,53 @@ public class CorrecaoFosforo {
     public double quantidadeAplicarFosforo(){
         double necessidadeAdicionar = this.teorFosforoAtingir - this.solo.getFosforo();
         double quantidadeAplicar = (necessidadeAdicionar * 2 * 2.29) /
-                (this.eficienciaFosforo / 100) * (100 / this.valorFonteFosforo());
+                (this.eficienciaFosforo / 100) * (100 / this.valorFonteFosforo(this.fonteFosforo));
         if (necessidadeAdicionar > 0.01)
             return quantidadeAplicar;
         else
             return 0.0;
     }
     
-    public ItemCorrecaoFornece correcaoFosforoFornece1(){
-        double valorItem;
-        switch (this.fonteFosforo){
-            case YOORIN:
-                valorItem = this.quantidadeAplicarFosforo()*0.15;
-                return new ItemCorrecaoFornece(valorItem, Nutrientes.MAGNESIO);
-            case SUPERFOSFATO_SIMPLES:
-                valorItem = this.quantidadeAplicarFosforo()*0.1;
-                return new ItemCorrecaoFornece(valorItem, Nutrientes.ENXOFRE);
-            case MULTIF_MAGNESIANO:
-                valorItem = this.quantidadeAplicarFosforo()*0.11;
-                return new ItemCorrecaoFornece(valorItem, Nutrientes.ENXOFRE);     
-            default:
-                return null;
-        }        
-    } 
-    
-    public ItemCorrecaoFornece correcaoFosforoFornece2(){
-        double valorItem;
+    public ItemCorrecaoFornece[] correcaoFosforoFornece(){
+        ItemCorrecaoFornece[] itemCorrecaoFornece = new ItemCorrecaoFornece[2];
         switch(this.fonteFosforo){
             case SUPERFOSFATO_SIMPLES:
-                valorItem = this.quantidadeAplicarFosforo()*0.28;
-                return new ItemCorrecaoFornece(valorItem, Nutrientes.CALCIO);
-            case SUPERFOSFATO_TRIPLO:
-                valorItem = this.quantidadeAplicarFosforo()*0.2;
-                return new ItemCorrecaoFornece(valorItem, Nutrientes.CALCIO);
+                itemCorrecaoFornece[0] = new ItemCorrecaoFornece(this.quantidadeAplicarFosforo()*0.28, Nutrientes.CALCIO);
+                itemCorrecaoFornece[1] = new ItemCorrecaoFornece(this.quantidadeAplicarFosforo()*0.1, Nutrientes.ENXOFRE);
+                return itemCorrecaoFornece;
+           case SUPERFOSFATO_TRIPLO:
+                itemCorrecaoFornece[0] = new ItemCorrecaoFornece(this.quantidadeAplicarFosforo()*0.2, Nutrientes.CALCIO);
+                return itemCorrecaoFornece;
             case MAP:
-                valorItem = this.quantidadeAplicarFosforo()*0.09;
-                return new ItemCorrecaoFornece(valorItem, Nutrientes.NITROGENIO);
+                itemCorrecaoFornece[0] = new ItemCorrecaoFornece(this.quantidadeAplicarFosforo()*0.09, Nutrientes.NITROGENIO);
+                return itemCorrecaoFornece;
             case DAP:
-                valorItem = this.quantidadeAplicarFosforo()*0.16;
-                return new ItemCorrecaoFornece(valorItem, Nutrientes.NITROGENIO);
+                itemCorrecaoFornece[0] = new ItemCorrecaoFornece(this.quantidadeAplicarFosforo()*0.16, Nutrientes.NITROGENIO);
+                return itemCorrecaoFornece;
             case YOORIN:
-                valorItem = this.quantidadeAplicarFosforo()*0.28;
-                return new ItemCorrecaoFornece(valorItem, Nutrientes.CALCIO);
+                itemCorrecaoFornece[0] = new ItemCorrecaoFornece(this.quantidadeAplicarFosforo()*0.15, Nutrientes.MAGNESIO);
+                itemCorrecaoFornece[1] = new ItemCorrecaoFornece(this.quantidadeAplicarFosforo()*0.28, Nutrientes.CALCIO);
+                return itemCorrecaoFornece;
             case FOSFATO_ARAD:
-                valorItem = this.quantidadeAplicarFosforo()*0.52;
-                return new ItemCorrecaoFornece(valorItem, Nutrientes.CALCIO);
             case FOSFATO_GAFSA:
-                valorItem = this.quantidadeAplicarFosforo()*0.52;
-                return new ItemCorrecaoFornece(valorItem, Nutrientes.CALCIO);
+                itemCorrecaoFornece[0] = new ItemCorrecaoFornece(this.quantidadeAplicarFosforo()*0.52, Nutrientes.CALCIO);
+                return itemCorrecaoFornece;
             case FOSFATO_DAOUI:
-                valorItem = this.quantidadeAplicarFosforo()*0.45;
-                return new ItemCorrecaoFornece(valorItem, Nutrientes.CALCIO);
+                itemCorrecaoFornece[0] = new ItemCorrecaoFornece(this.quantidadeAplicarFosforo()*0.45, Nutrientes.CALCIO);
+                return itemCorrecaoFornece;
             case FOSF_PATOS_MINAS:
-                valorItem = this.quantidadeAplicarFosforo()*0.28;
-                return new ItemCorrecaoFornece(valorItem, Nutrientes.CALCIO);
+                itemCorrecaoFornece[0] = new ItemCorrecaoFornece(this.quantidadeAplicarFosforo()*0.28, Nutrientes.CALCIO);
+                return itemCorrecaoFornece;
             case ESCORIA_THOMAS:
-                valorItem = this.quantidadeAplicarFosforo()*0.44;
-                return new ItemCorrecaoFornece(valorItem, Nutrientes.CALCIO);
+                itemCorrecaoFornece[0] = new ItemCorrecaoFornece(this.quantidadeAplicarFosforo()*0.44, Nutrientes.CALCIO);
+                return itemCorrecaoFornece;
             case ACIDO_FOSFORICO:
-                valorItem = 0.0;
-                return new ItemCorrecaoFornece(valorItem, null);
+                itemCorrecaoFornece[0] = new ItemCorrecaoFornece(0.0, null);
+                return itemCorrecaoFornece;
             case MULTIF_MAGNESIANO:
-                valorItem = this.quantidadeAplicarFosforo()*0.18;
-                return new ItemCorrecaoFornece(valorItem, Nutrientes.CALCIO);
+                itemCorrecaoFornece[0] = new ItemCorrecaoFornece(this.quantidadeAplicarFosforo()*0.11, Nutrientes.ENXOFRE);
+                itemCorrecaoFornece[1] = new ItemCorrecaoFornece(this.quantidadeAplicarFosforo()*0.18, Nutrientes.CALCIO);
+                return itemCorrecaoFornece;
             default:
                 return null;
         }        
