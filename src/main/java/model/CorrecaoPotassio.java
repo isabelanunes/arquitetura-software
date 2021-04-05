@@ -40,8 +40,8 @@ public class CorrecaoPotassio {
             return 0.0;
     }
     
-    public double valorFontePotassio(){
-        switch(this.fontePotassio){
+    public double valorFontePotassio(FontesPotassio fontesPotassio){
+        switch(fontesPotassio){
             case CLORETO_POTASSIO:
                 return 58.0;
             case SULFATO_POTASSIO:
@@ -61,34 +61,24 @@ public class CorrecaoPotassio {
             return 0.0;
         else
             return necessidadeAdicionar * 39.1 * 10 * 2 * 1.2 * 100 / 0.85 /100 *100 
-                    / this.valorFontePotassio();
+                    / this.valorFontePotassio(this.fontePotassio);
     }
     
-    public ItemCorrecaoFornece correcaoPotassioFornece1(){
-        double valorItem = 0;
+    public ItemCorrecaoFornece[] correcaoPotassioFornece(){
+        ItemCorrecaoFornece[] itemCorrecaoFornece = new ItemCorrecaoFornece[2];
         switch (this.fontePotassio){
             case SULFATO_POTASSIO:
-                valorItem = this.quantidadeAplicarPotassio()*0.17;
-                return new ItemCorrecaoFornece(valorItem, Nutrientes.ENXOFRE);
+                itemCorrecaoFornece[0] = new ItemCorrecaoFornece(this.quantidadeAplicarPotassio()*0.17, Nutrientes.ENXOFRE);
+                return itemCorrecaoFornece;
             case SULFATO_POTASSIO_MAGNESIO:
-                valorItem = this.quantidadeAplicarPotassio()*0.22;
-                return new ItemCorrecaoFornece(valorItem, Nutrientes.ENXOFRE);
+                itemCorrecaoFornece[0] = new ItemCorrecaoFornece(this.quantidadeAplicarPotassio()*0.22, Nutrientes.ENXOFRE);
+                itemCorrecaoFornece[1] = new ItemCorrecaoFornece(this.quantidadeAplicarPotassio()*0.18, Nutrientes.MAGNESIO);
+                return itemCorrecaoFornece;
             default:
                 return null;
         }        
     }
-    
-    public ItemCorrecaoFornece correcaoPotassioFornece2(){
-        double valorItem;
-        switch (this.fontePotassio){
-            case SULFATO_POTASSIO_MAGNESIO:
-                valorItem = this.quantidadeAplicarPotassio()*0.18;
-                return new ItemCorrecaoFornece(valorItem, Nutrientes.MAGNESIO);
-            default:
-                return null;
-        }        
-    } 
-    
+        
     public double custoAlqueirePotassio(){
         return (this.valorFontePotassio * this.quantidadeAplicarPotassio()/1000);
     }

@@ -21,21 +21,21 @@ public class CorrecaoPotassioTest {
     
     @Test
     public void testeParticipacaoPotassioAtual(){
-       Solo solo = new Solo(TexturaSolo.ARGILOSO, 8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35);
+       Solo solo = new Solo(8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35);
        CorrecaoPotassio correcaoPotassio = new CorrecaoPotassio(3.0, solo, FontesPotassio.CLORETO_POTASSIO, 2500.00);
        Assert.assertEquals(1.2, correcaoPotassio.participacaoPotassioAtual(), 0.1);
     }
     
     @Test
     public void testeParticipacaoPotassioCorrecao(){
-       Solo solo = new Solo(TexturaSolo.ARGILOSO, 8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35);
+       Solo solo = new Solo(8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35);
        CorrecaoPotassio correcaoPotassio = new CorrecaoPotassio(3.0, solo, FontesPotassio.CLORETO_POTASSIO, 2500.00);
        Assert.assertEquals(3.0, correcaoPotassio.participacaoPotassioCorrecao(), 0.1);
     }
     
     @Test
     public void testeParticipacaoPotassioPercentualIdeal(){
-       Solo solo = new Solo(TexturaSolo.ARGILOSO, 8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35);
+       Solo solo = new Solo(8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35);
        CorrecaoPotassio correcaoPotassio = new CorrecaoPotassio(3.0, solo, FontesPotassio.CLORETO_POTASSIO, 2500.00);
        Assert.assertEquals(3.0, correcaoPotassio.participacaoPotassioPercentualIdeal(), 0.1);
     }
@@ -43,7 +43,7 @@ public class CorrecaoPotassioTest {
     @Test
     public void testeQuantidadeAplicarPotassio(){
         
-       Solo solo = new Solo(TexturaSolo.ARGILOSO, 8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35);
+       Solo solo = new Solo(8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35);
        CorrecaoPotassio correcaoPotassio = new CorrecaoPotassio(3.0, solo, FontesPotassio.CLORETO_POTASSIO, 2500.00);
        Assert.assertEquals(450.55, correcaoPotassio.quantidadeAplicarPotassio(), 0.1);
        
@@ -55,31 +55,28 @@ public class CorrecaoPotassioTest {
     }
 
     @Test
-    public void testeCorrecaoPotassioFornece1(){
-        Solo solo = new Solo(TexturaSolo.ARGILOSO, 8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35);
+    public void testeCorrecaoPotassioFornece(){
+        Solo solo = new Solo(8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35);
         CorrecaoPotassio correcaoPotassio = new CorrecaoPotassio(3.0, solo, FontesPotassio.SULFATO_POTASSIO, 2500.00);
-        ItemCorrecaoFornece itemCorrecao = new ItemCorrecaoFornece(85.43, Nutrientes.ENXOFRE);
-        Assert.assertEquals(itemCorrecao.getValor(), correcaoPotassio.correcaoPotassioFornece1().getValor(),0.1);
-        Assert.assertEquals(itemCorrecao.getDescricao_item(), correcaoPotassio.correcaoPotassioFornece1().getDescricao_item());
+        ItemCorrecaoFornece itemCorrecao1 = new ItemCorrecaoFornece(85.43, Nutrientes.ENXOFRE);
+        ItemCorrecaoFornece[] retornoItemCorrecaoFornece = correcaoPotassio.correcaoPotassioFornece();
 
+        Assert.assertEquals(itemCorrecao1.getValor(), retornoItemCorrecaoFornece[0].getValor(),0.1);
+        Assert.assertEquals(itemCorrecao1.getDescricao_item(), retornoItemCorrecaoFornece[0].getDescricao_item());
+   
         correcaoPotassio = new CorrecaoPotassio(3.0, solo, FontesPotassio.SULFATO_POTASSIO_MAGNESIO, 2500.00);
-        itemCorrecao = new ItemCorrecaoFornece(261.32, Nutrientes.ENXOFRE);
-        Assert.assertEquals(itemCorrecao.getValor(), correcaoPotassio.correcaoPotassioFornece1().getValor(),0.1);
-        Assert.assertEquals(itemCorrecao.getDescricao_item(), correcaoPotassio.correcaoPotassioFornece1().getDescricao_item());
-    } 
-    
-    @Test
-    public void testeCorrecaoPotassioFornece2(){
-        Solo solo = new Solo(TexturaSolo.ARGILOSO, 8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35);
-        CorrecaoPotassio correcaoPotassio = new CorrecaoPotassio(3.0, solo, FontesPotassio.SULFATO_POTASSIO_MAGNESIO, 2500.00);
-        ItemCorrecaoFornece itemCorrecao = new ItemCorrecaoFornece(213.80, Nutrientes.MAGNESIO);
-        Assert.assertEquals(itemCorrecao.getValor(), correcaoPotassio.correcaoPotassioFornece2().getValor(),0.1);
-        Assert.assertEquals(itemCorrecao.getDescricao_item(), correcaoPotassio.correcaoPotassioFornece2().getDescricao_item());
+        itemCorrecao1 = new ItemCorrecaoFornece(261.32, Nutrientes.ENXOFRE);
+        retornoItemCorrecaoFornece = correcaoPotassio.correcaoPotassioFornece();
+        Assert.assertEquals(itemCorrecao1.getValor(), retornoItemCorrecaoFornece[0].getValor(),0.1);
+        Assert.assertEquals(itemCorrecao1.getDescricao_item(), retornoItemCorrecaoFornece[0].getDescricao_item());
+        ItemCorrecaoFornece itemCorrecao2 = new ItemCorrecaoFornece(213.80, Nutrientes.MAGNESIO);
+        Assert.assertEquals(itemCorrecao2.getValor(), retornoItemCorrecaoFornece[1].getValor(),0.1);
+        Assert.assertEquals(itemCorrecao2.getDescricao_item(), retornoItemCorrecaoFornece[1].getDescricao_item());
     } 
     
     @Test
     public void testeCustoAlqueire(){
-       Solo solo = new Solo(TexturaSolo.ARGILOSO, 8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35);
+       Solo solo = new Solo(8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35);
        CorrecaoPotassio correcaoPotassio = new CorrecaoPotassio(3.0, solo, FontesPotassio.CLORETO_POTASSIO, 2500.00);
        Assert.assertEquals(1126.37, correcaoPotassio.custoAlqueirePotassio(), 0.1);
        
