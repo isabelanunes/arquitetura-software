@@ -11,7 +11,6 @@ package model;
  * @author Isabela Nunes
  */
 public class Solo {
-    private TexturaSolo textura;
     private double fosforo;
     private double potassio;
     private double calcio;
@@ -23,8 +22,7 @@ public class Solo {
     public Solo() {
     }
 
-    public Solo(TexturaSolo textura, double fosforo, double potassio, double calcio, double magnesio, double enxofre, double aluminio, double acidez) {
-        this.textura = textura;
+    public Solo(double fosforo, double potassio, double calcio, double magnesio, double enxofre, double aluminio, double acidez) {
         this.fosforo = fosforo;
         this.potassio = potassio;
         this.calcio = calcio;
@@ -50,68 +48,16 @@ public class Solo {
         return this.magnesio;
     }
     
+    public double getEnxofre(){
+        return this.enxofre;
+    }
+    
+    public double getAluminio(){
+        return this.aluminio;
+    }
+    
     public double getAcidez(){
         return this.acidez;
-    }
-    
-    public double getValorIdealFosforo() {
-        switch(this.textura){
-                   case ARGILOSO:
-                       return 9.0;
-                   case TEXTURA_MEDIA:
-                       return 12.0;
-                   default:
-                       return 0.0;
-        }    
-    }
-    
-     public double getValorIdealPotassio(){
-        switch(this.textura){
-            case ARGILOSO:
-                return 0.35;
-            case TEXTURA_MEDIA:
-                return 0.25;
-            default:
-                return 0.0;
-        }
-    }
-
-    public double getValorIdealCalcio(){
-        switch (this.textura){
-            case ARGILOSO:
-                return 6.0;
-            case TEXTURA_MEDIA:
-                return 4.0;
-            default:
-                return 0.0;
-        }
-    }
-
-    public double getValorIdealMagnesio(){
-        switch (this.textura){
-            case ARGILOSO:
-                return 1.5;
-            case TEXTURA_MEDIA:
-                return 1.0;
-            default:
-                return 0.0;
-        }
-    }
-     
-
-    public double getValorIdealEnxofre(){
-        switch (this.textura){
-            case ARGILOSO:
-                return 9.0;
-            case TEXTURA_MEDIA:
-                return 6.0;
-            default:
-                return 0.0;
-        }
-    }
-
-    public double getValorIdealAluminio(){
-        return 0.0;
     }
 
     public double getSCmol() {

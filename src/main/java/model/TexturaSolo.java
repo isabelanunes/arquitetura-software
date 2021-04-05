@@ -10,6 +10,17 @@ package model;
  * @author Isabela Nunes
  */
 public enum TexturaSolo {
-    ARGILOSO,
-    TEXTURA_MEDIA,
+    ARGILOSO{
+        public Solo getValoresIdeais() {
+            return new Solo(9.0, 0.35, 6.0, 1.5, 9.0, 0.0, 0.0);
+        }
+    },
+    TEXTURA_MEDIA{
+         public Solo getValoresIdeais() {
+            return new Solo(12.0, 0.25, 3.0, 1.0, 6.0, 0.0, 0.0);
+        }
+    };
+    
+    public abstract Solo getValoresIdeais();
+
 }

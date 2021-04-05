@@ -21,7 +21,7 @@ public class CorrecaoFosforoTest {
     
     @Test
     public void testeQuantidadeAplicarFosforo(){
-        Solo solo = new Solo(TexturaSolo.ARGILOSO, 8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 0.0);
+        Solo solo = new Solo(8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 0.0);
         CorrecaoFosforo correcaoFosforo = new CorrecaoFosforo(12, FontesFosforo.SUPERFOSFATO_SIMPLES, 70, 1260, solo);
         Assert.assertEquals(123.95, correcaoFosforo.quantidadeAplicarFosforo(), 0.1);
         
@@ -61,7 +61,7 @@ public class CorrecaoFosforoTest {
 
     @Test
     public void testeCorrecaoFosforoFornece(){
-        Solo solo = new Solo(TexturaSolo.ARGILOSO, 8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 0.0);
+        Solo solo = new Solo(8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 0.0);
         CorrecaoFosforo correcaoFosforo = new CorrecaoFosforo(12, FontesFosforo.SUPERFOSFATO_SIMPLES, 70, 1260, solo);
         ItemCorrecaoFornece itemCorrecao1 = new ItemCorrecaoFornece(34.70, Nutrientes.CALCIO);
         ItemCorrecaoFornece itemCorrecao2 = new ItemCorrecaoFornece(12.39, Nutrientes.ENXOFRE);
@@ -91,11 +91,11 @@ public class CorrecaoFosforoTest {
         Assert.assertEquals(itemCorrecao1.getDescricao_item(), retornoItemCorrecaoFornece[0].getDescricao_item());
 
         correcaoFosforo = new CorrecaoFosforo(12, FontesFosforo.YOORIN, 70, 1260, solo);
-        itemCorrecao1 = new ItemCorrecaoFornece(34.70, Nutrientes.CALCIO);
+        itemCorrecao1 = new ItemCorrecaoFornece(18.59, Nutrientes.MAGNESIO);
         retornoItemCorrecaoFornece = correcaoFosforo.correcaoFosforoFornece();
         Assert.assertEquals(itemCorrecao1.getValor(), retornoItemCorrecaoFornece[0].getValor(),0.1);
         Assert.assertEquals(itemCorrecao1.getDescricao_item(), retornoItemCorrecaoFornece[0].getDescricao_item());
-        itemCorrecao2 = new ItemCorrecaoFornece(18.59, Nutrientes.MAGNESIO);
+        itemCorrecao2 = new ItemCorrecaoFornece(34.7, Nutrientes.CALCIO);
         Assert.assertEquals(itemCorrecao2.getValor(), retornoItemCorrecaoFornece[1].getValor(),0.1);
         Assert.assertEquals(itemCorrecao2.getDescricao_item(), retornoItemCorrecaoFornece[1].getDescricao_item());
         
@@ -137,18 +137,18 @@ public class CorrecaoFosforoTest {
         Assert.assertEquals(itemCorrecao1.getDescricao_item(), retornoItemCorrecaoFornece[0].getDescricao_item());
 
         correcaoFosforo = new CorrecaoFosforo(12, FontesFosforo.MULTIF_MAGNESIANO, 70, 1260, solo);
-        itemCorrecao1 = new ItemCorrecaoFornece(22.31, Nutrientes.CALCIO);
+        itemCorrecao1 = new ItemCorrecaoFornece(13.63, Nutrientes.ENXOFRE);
         retornoItemCorrecaoFornece = correcaoFosforo.correcaoFosforoFornece();
         Assert.assertEquals(itemCorrecao1.getValor(), retornoItemCorrecaoFornece[0].getValor(),0.1);
         Assert.assertEquals(itemCorrecao1.getDescricao_item(), retornoItemCorrecaoFornece[0].getDescricao_item());
-        itemCorrecao2 = new ItemCorrecaoFornece(13.63, Nutrientes.ENXOFRE);
+        itemCorrecao2 = new ItemCorrecaoFornece(22.31, Nutrientes.CALCIO);
         Assert.assertEquals(itemCorrecao2.getValor(), retornoItemCorrecaoFornece[1].getValor(),0.1);
         Assert.assertEquals(itemCorrecao2.getDescricao_item(), retornoItemCorrecaoFornece[1].getDescricao_item());
 }
     
     @Test
     public void testeCustoAlqueire(){
-        Solo solo = new Solo(TexturaSolo.ARGILOSO, 8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 0.0);
+        Solo solo = new Solo(8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 0.0);
         CorrecaoFosforo correcaoFosforo = new CorrecaoFosforo(12, FontesFosforo.SUPERFOSFATO_SIMPLES, 70, 1260, solo);
         Assert.assertEquals(156.17, correcaoFosforo.custoAlqueireFosforo(),0.1);
         
