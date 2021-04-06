@@ -68,6 +68,10 @@ public class Solo {
         return (this.potassio + this.calcio + this.magnesio + this.acidez);
     }
 
+    /* Os métodos getVPercentual, getMOPercentual, getCarbono  
+    foram baseados no código de Gabriel Costa Silva: 
+    <https://github.com/gabrielcostasilva/sa-soilcorrection> */
+    
     public double getVPercentual () {
         
         if (this.getSCmol() > 0 && this.getCTCCmol() > 0) {

@@ -9,7 +9,12 @@ package model;
  *
  * @author Isabela Nunes
  */
+
+/*  Essa classe enum foi baseada no código de Gabriel Costa Silva: 
+    <https://github.com/gabrielcostasilva/sa-soilcorrection> */
+
 public enum TexturaSolo {
+    
     ARGILOSO{
         public Solo getValoresIdeais() {
             return new Solo(9.0, 0.35, 6.0, 1.5, 9.0, 0.0, 0.0);
