@@ -11,16 +11,13 @@ package model;
  * @author Isabela Nunes
  */
 public class Solo {
-    private double fosforo;
-    private double potassio;
-    private double calcio;
-    private double magnesio;
-    private double enxofre;
-    private double aluminio;
-    private double acidez;
-
-    public Solo() {
-    }
+    private final double fosforo;
+    private final double potassio;
+    private final double calcio;
+    private final double magnesio;
+    private final double enxofre;
+    private final double aluminio;
+    private final double acidez;
 
     public Solo(double fosforo, double potassio, double calcio, double magnesio, double enxofre, double aluminio, double acidez) {
         this.fosforo = fosforo;
@@ -67,37 +64,17 @@ public class Solo {
     public double getCTCCmol() {
         return (this.potassio + this.calcio + this.magnesio + this.acidez);
     }
-
-    /* Os métodos getVPercentual, getMOPercentual, getCarbono  
-    foram baseados no código de Gabriel Costa Silva: 
-    <https://github.com/gabrielcostasilva/sa-soilcorrection> */
     
     public double getVPercentual () {
-        
-        if (this.getSCmol() > 0 && this.getCTCCmol() > 0) {
-            return this.getSCmol() / this.getCTCCmol() * 100;
-        } else {
-            return 0.0;
-        }
+        return (this.getCTCCmol() > 0 && this.getSCmol() > 0) ? (this.getSCmol() / this.getCTCCmol() * 100) : 0.0;            
     }
 
     public double getMOPercentual(double mo) {
-        if (mo > 0) {
-            return mo / 10;
-
-        } else {
-            return 0.0;
-        }
+        return (mo > 0 ? mo / 10 : 0.0);
     }
 
     public double getCarbono(double moPercentual) {
-        
-        if (moPercentual > 0) {
-            return moPercentual / 1.72 * 10;
-            
-        } else {
-            return 0.0;
-        }
+        return moPercentual > 0 ? moPercentual / 1.72 * 10 : 0.0;
     }
 
 

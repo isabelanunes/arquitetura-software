@@ -11,12 +11,12 @@ import java.text.DecimalFormat;
  *
  * @author Isabela Nunes
  */
-public class CorrecaoFosforo {
-    private double teorFosforoAtingir;
+public class CorrecaoFosforo implements CorrecaoElemento{
+    private final double teorFosforoAtingir;
     private FontesFosforo fonteFosforo;
-    private double eficienciaFosforo;
-    private double valorFonteFosforo;
-    private Solo solo;
+    private final double eficienciaFosforo;
+    private final double valorFonteFosforo;
+    private final Solo solo;
 
     public CorrecaoFosforo(double teorFosforoAtingir, FontesFosforo fonteFosforo, double eficienciaFosforo, double valorFonteFosforo, Solo solo) {
         this.teorFosforoAtingir = teorFosforoAtingir;
@@ -26,22 +26,22 @@ public class CorrecaoFosforo {
         this.solo = solo;
     }
     
-    public double quantidadeAplicarFosforo(){
+    @Override
+    public double quantidadeAplicarElemento(){
         double necessidadeAdicionar = this.teorFosforoAtingir - this.solo.getFosforo();
         double quantidadeAplicar = (necessidadeAdicionar * 2 * 2.29) /
-                (this.eficienciaFosforo / 100) * (100 / this.fonteFosforo.valorFonteFosforo());
-        if (necessidadeAdicionar > 0.01)
-            return quantidadeAplicar;
-        else
-            return 0.0;
+                (this.eficienciaFosforo / 100) * (100 / this.fonteFosforo.valorFonte());
+        return necessidadeAdicionar > 0.01 ? quantidadeAplicar : 0.0;
     }
     
-    public ItemCorrecaoFornece[] correcaoFosforoFornece(){
-        return this.fonteFosforo.correcaoFosforoFornece(this);
+    @Override
+    public ItemCorrecaoFornece[] correcaoElemento(){
+        return this.fonteFosforo.correcaoFornece(this);
     }
     
-    public double custoAlqueireFosforo(){
-        return (this.valorFonteFosforo * this.quantidadeAplicarFosforo()/1000);
+    @Override
+    public double calcularCustoAlqueire(){
+        return (this.valorFonteFosforo * this.quantidadeAplicarElemento()/1000);
     }
     
 }

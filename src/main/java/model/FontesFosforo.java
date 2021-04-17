@@ -9,145 +9,165 @@ package model;
  *
  * @author Isabela Nunes
  */
-public enum FontesFosforo {
+public enum FontesFosforo implements FontesElementos{
     SUPERFOSFATO_SIMPLES{
-        public double valorFonteFosforo() {
+        @Override
+        public double valorFonte() {
             return 18.0;
         }
         
-        public ItemCorrecaoFornece[] correcaoFosforoFornece(CorrecaoFosforo correcaoFosforo){
+        @Override
+        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
             ItemCorrecaoFornece[] itemCorrecaoFornece = new ItemCorrecaoFornece[2];
-            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoFosforo.quantidadeAplicarFosforo()*0.28, Nutrientes.CALCIO);
-            itemCorrecaoFornece[1] = new ItemCorrecaoFornece(correcaoFosforo.quantidadeAplicarFosforo()*0.1, Nutrientes.ENXOFRE);
+            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.28, Nutrientes.CALCIO);
+            itemCorrecaoFornece[1] = new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.1, Nutrientes.ENXOFRE);
             return itemCorrecaoFornece;
         }
         
     },
     SUPERFOSFATO_TRIPLO{
-        public double valorFonteFosforo() {
+        @Override
+        public double valorFonte() {
             return 41.0;
         }
         
-        public ItemCorrecaoFornece[] correcaoFosforoFornece(CorrecaoFosforo correcaoFosforo){
+        @Override
+        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
             ItemCorrecaoFornece[] itemCorrecaoFornece = new ItemCorrecaoFornece[1];
-            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoFosforo.quantidadeAplicarFosforo()*0.2, Nutrientes.CALCIO);
+            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.2, Nutrientes.CALCIO);
             return itemCorrecaoFornece;
         }
     },
     MAP{
-        public double valorFonteFosforo() {
+        @Override
+        public double valorFonte() {
             return 48.0;
         }
         
-        public ItemCorrecaoFornece[] correcaoFosforoFornece(CorrecaoFosforo correcaoFosforo){
+        @Override
+        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
             ItemCorrecaoFornece[] itemCorrecaoFornece = new ItemCorrecaoFornece[1];
-            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoFosforo.quantidadeAplicarFosforo()*0.09, Nutrientes.NITROGENIO);
+            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.09, Nutrientes.NITROGENIO);
             return itemCorrecaoFornece;
         }
     },
     DAP{
-        public double valorFonteFosforo() {
+        @Override
+        public double valorFonte() {
             return 45.0;
         }
         
-        public ItemCorrecaoFornece[] correcaoFosforoFornece(CorrecaoFosforo correcaoFosforo){
+        @Override
+        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
             ItemCorrecaoFornece[] itemCorrecaoFornece = new ItemCorrecaoFornece[1];
-            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoFosforo.quantidadeAplicarFosforo()*0.16, Nutrientes.NITROGENIO);
+            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.16, Nutrientes.NITROGENIO);
             return itemCorrecaoFornece;
         }
     },
     YOORIN{
-        public double valorFonteFosforo() {
+        @Override
+        public double valorFonte() {
             return 18.0;
         }
         
-        public ItemCorrecaoFornece[] correcaoFosforoFornece(CorrecaoFosforo correcaoFosforo){
+        @Override
+        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
             ItemCorrecaoFornece[] itemCorrecaoFornece = new ItemCorrecaoFornece[2];
-            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoFosforo.quantidadeAplicarFosforo()*0.15, Nutrientes.MAGNESIO);
-            itemCorrecaoFornece[1] = new ItemCorrecaoFornece(correcaoFosforo.quantidadeAplicarFosforo()*0.28, Nutrientes.CALCIO);
+            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.15, Nutrientes.MAGNESIO);
+            itemCorrecaoFornece[1] = new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.28, Nutrientes.CALCIO);
             return itemCorrecaoFornece;
         }
     },
     FOSFATO_ARAD{
-        public double valorFonteFosforo() {
+        @Override
+        public double valorFonte() {
             return 33.0;
         }
         
-        public ItemCorrecaoFornece[] correcaoFosforoFornece(CorrecaoFosforo correcaoFosforo){
+        @Override
+        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
             ItemCorrecaoFornece[] itemCorrecaoFornece = new ItemCorrecaoFornece[1];
-            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoFosforo.quantidadeAplicarFosforo()*0.52, Nutrientes.CALCIO);
+            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.52, Nutrientes.CALCIO);
             return itemCorrecaoFornece;
         }
     },
     FOSFATO_GAFSA{
-        public double valorFonteFosforo() {
+        @Override
+        public double valorFonte() {
             return 29.0;
         }
         
-        public ItemCorrecaoFornece[] correcaoFosforoFornece(CorrecaoFosforo correcaoFosforo){
+        @Override
+        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
             ItemCorrecaoFornece[] itemCorrecaoFornece = new ItemCorrecaoFornece[1];
-            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoFosforo.quantidadeAplicarFosforo()*0.52, Nutrientes.CALCIO);
+            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.52, Nutrientes.CALCIO);
             return itemCorrecaoFornece;
         }
     },
     FOSFATO_DAOUI{
-        public double valorFonteFosforo() {
+        @Override
+        public double valorFonte() {
             return 32.0;
         }
         
-        public ItemCorrecaoFornece[] correcaoFosforoFornece(CorrecaoFosforo correcaoFosforo){
+        @Override
+        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
             ItemCorrecaoFornece[] itemCorrecaoFornece = new ItemCorrecaoFornece[1];
-            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoFosforo.quantidadeAplicarFosforo()*0.45, Nutrientes.CALCIO);
+            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.45, Nutrientes.CALCIO);
             return itemCorrecaoFornece;
         }
     },
     FOSF_PATOS_MINAS{
-        public double valorFonteFosforo() {
+        @Override
+        public double valorFonte() {
             return 24.0;
         }
         
-        public ItemCorrecaoFornece[] correcaoFosforoFornece(CorrecaoFosforo correcaoFosforo){
+        @Override
+        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
             ItemCorrecaoFornece[] itemCorrecaoFornece = new ItemCorrecaoFornece[1];
-            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoFosforo.quantidadeAplicarFosforo()*0.28, Nutrientes.CALCIO);
+            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.28, Nutrientes.CALCIO);
             return itemCorrecaoFornece;
         }
     },
     ESCORIA_THOMAS{
-        public double valorFonteFosforo() {
+        @Override
+        public double valorFonte() {
             return 18.5;
         }
         
-        public ItemCorrecaoFornece[] correcaoFosforoFornece(CorrecaoFosforo correcaoFosforo){
+        @Override
+        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
             ItemCorrecaoFornece[] itemCorrecaoFornece = new ItemCorrecaoFornece[1];
-            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoFosforo.quantidadeAplicarFosforo()*0.44, Nutrientes.CALCIO);
+            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.44, Nutrientes.CALCIO);
             return itemCorrecaoFornece;
         }
     },
     ACIDO_FOSFORICO{
-        public double valorFonteFosforo() {
+        @Override
+        public double valorFonte() {
             return 52.0;
         }
         
-        public ItemCorrecaoFornece[] correcaoFosforoFornece(CorrecaoFosforo correcaoFosforo){
+        @Override
+        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
             ItemCorrecaoFornece[] itemCorrecaoFornece = new ItemCorrecaoFornece[1];
             itemCorrecaoFornece[0] = new ItemCorrecaoFornece(0.0, null);
             return itemCorrecaoFornece;
         }
     },
     MULTIF_MAGNESIANO{
-        public double valorFonteFosforo() {
+        @Override
+        public double valorFonte() {
             return 18.0;
         }
         
-        public ItemCorrecaoFornece[] correcaoFosforoFornece(CorrecaoFosforo correcaoFosforo){
+        @Override
+        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
             ItemCorrecaoFornece[] itemCorrecaoFornece = new ItemCorrecaoFornece[2];
-            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoFosforo.quantidadeAplicarFosforo()*0.11, Nutrientes.ENXOFRE);
-            itemCorrecaoFornece[1] = new ItemCorrecaoFornece(correcaoFosforo.quantidadeAplicarFosforo()*0.18, Nutrientes.CALCIO);
+            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.11, Nutrientes.ENXOFRE);
+            itemCorrecaoFornece[1] = new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.18, Nutrientes.CALCIO);
             return itemCorrecaoFornece;
         }
     };
-    
-    public abstract double valorFonteFosforo();
-    public abstract ItemCorrecaoFornece[] correcaoFosforoFornece(CorrecaoFosforo correcaoFosforo);
-
 }

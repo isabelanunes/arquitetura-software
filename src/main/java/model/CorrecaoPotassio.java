@@ -9,11 +9,11 @@ package model;
  *
  * @author Isabela Nunes
  */
-public class CorrecaoPotassio {
-    private double participacaoPotassioDesejada;
-    private Solo solo;
-    private FontesPotassio fontePotassio;
-    private double valorFontePotassio;
+public class CorrecaoPotassio implements CorrecaoElemento{
+    private final double participacaoPotassioDesejada;
+    private final Solo solo;
+    private final FontesPotassio fontePotassio;
+    private final double valorFontePotassio;
 
     public CorrecaoPotassio(double participacaoPotassioDesejada, Solo solo, FontesPotassio fontePotassio, double valorFontePotassio) {
         this.participacaoPotassioDesejada = participacaoPotassioDesejada;
@@ -40,23 +40,24 @@ public class CorrecaoPotassio {
             return 0.0;
     }
     
-    public double quantidadeAplicarPotassio(){
+    @Override
+    public double quantidadeAplicarElemento(){
         double necessidadeAdicionar = this.solo.getPotassio()*
                 this.participacaoPotassioDesejada/this.participacaoPotassioAtual()
                 - this.solo.getPotassio();
-        if(necessidadeAdicionar<0.01)
-            return 0.0;
-        else
-            return necessidadeAdicionar * 39.1 * 10 * 2 * 1.2 * 100 / 0.85 /100 *100 
-                    / this.fontePotassio.valorFontePotassio();
+        double quantidadeAplicar = necessidadeAdicionar * 39.1 * 10 * 2 * 1.2 * 100 / 0.85 /100 *100 
+                    / this.fontePotassio.valorFonte();
+        return necessidadeAdicionar > 0.01 ? quantidadeAplicar : 0.0;
     }
     
-    public ItemCorrecaoFornece[] correcaoPotassioFornece(){
-        return this.fontePotassio.correcaoPotassioFornece(this);
+    @Override
+    public ItemCorrecaoFornece[] correcaoElemento(){
+        return this.fontePotassio.correcaoFornece(this);
     }
         
-    public double custoAlqueirePotassio(){
-        return (this.valorFontePotassio * this.quantidadeAplicarPotassio()/1000);
+    @Override
+    public double calcularCustoAlqueire(){
+        return (this.valorFontePotassio * this.quantidadeAplicarElemento()/1000);
     }
     
 }

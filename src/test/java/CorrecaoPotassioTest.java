@@ -9,7 +9,6 @@ import model.FontesPotassio;
 import model.ItemCorrecaoFornece;
 import model.Nutrientes;
 import model.Solo;
-import model.TexturaSolo;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -45,13 +44,13 @@ public class CorrecaoPotassioTest {
         
        Solo solo = new Solo(8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35);
        CorrecaoPotassio correcaoPotassio = new CorrecaoPotassio(3.0, solo, FontesPotassio.CLORETO_POTASSIO, 2500.00);
-       Assert.assertEquals(450.55, correcaoPotassio.quantidadeAplicarPotassio(), 0.1);
+       Assert.assertEquals(450.55, correcaoPotassio.quantidadeAplicarElemento(), 0.1);
        
        correcaoPotassio = new CorrecaoPotassio(3.0, solo, FontesPotassio.SULFATO_POTASSIO, 2500.00);
-       Assert.assertEquals(502.53, correcaoPotassio.quantidadeAplicarPotassio(), 0.1);
+       Assert.assertEquals(502.53, correcaoPotassio.quantidadeAplicarElemento(), 0.1);
        
        correcaoPotassio = new CorrecaoPotassio(3.0, solo, FontesPotassio.SULFATO_POTASSIO_MAGNESIO, 2500.00);
-       Assert.assertEquals(1187.80, correcaoPotassio.quantidadeAplicarPotassio(), 0.1); 
+       Assert.assertEquals(1187.80, correcaoPotassio.quantidadeAplicarElemento(), 0.1); 
     }
 
     @Test
@@ -59,14 +58,14 @@ public class CorrecaoPotassioTest {
         Solo solo = new Solo(8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35);
         CorrecaoPotassio correcaoPotassio = new CorrecaoPotassio(3.0, solo, FontesPotassio.SULFATO_POTASSIO, 2500.00);
         ItemCorrecaoFornece itemCorrecao1 = new ItemCorrecaoFornece(85.43, Nutrientes.ENXOFRE);
-        ItemCorrecaoFornece[] retornoItemCorrecaoFornece = correcaoPotassio.correcaoPotassioFornece();
+        ItemCorrecaoFornece[] retornoItemCorrecaoFornece = correcaoPotassio.correcaoElemento();
 
         Assert.assertEquals(itemCorrecao1.getValor(), retornoItemCorrecaoFornece[0].getValor(),0.1);
         Assert.assertEquals(itemCorrecao1.getDescricao_item(), retornoItemCorrecaoFornece[0].getDescricao_item());
    
         correcaoPotassio = new CorrecaoPotassio(3.0, solo, FontesPotassio.SULFATO_POTASSIO_MAGNESIO, 2500.00);
         itemCorrecao1 = new ItemCorrecaoFornece(261.32, Nutrientes.ENXOFRE);
-        retornoItemCorrecaoFornece = correcaoPotassio.correcaoPotassioFornece();
+        retornoItemCorrecaoFornece = correcaoPotassio.correcaoElemento();
         Assert.assertEquals(itemCorrecao1.getValor(), retornoItemCorrecaoFornece[0].getValor(),0.1);
         Assert.assertEquals(itemCorrecao1.getDescricao_item(), retornoItemCorrecaoFornece[0].getDescricao_item());
         ItemCorrecaoFornece itemCorrecao2 = new ItemCorrecaoFornece(213.80, Nutrientes.MAGNESIO);
@@ -78,13 +77,13 @@ public class CorrecaoPotassioTest {
     public void testeCustoAlqueire(){
        Solo solo = new Solo(8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35);
        CorrecaoPotassio correcaoPotassio = new CorrecaoPotassio(3.0, solo, FontesPotassio.CLORETO_POTASSIO, 2500.00);
-       Assert.assertEquals(1126.37, correcaoPotassio.custoAlqueirePotassio(), 0.1);
+       Assert.assertEquals(1126.37, correcaoPotassio.calcularCustoAlqueire(), 0.1);
        
        correcaoPotassio = new CorrecaoPotassio(3.0, solo, FontesPotassio.SULFATO_POTASSIO, 2500.00);
-       Assert.assertEquals(1256.33, correcaoPotassio.custoAlqueirePotassio(), 0.1);
+       Assert.assertEquals(1256.33, correcaoPotassio.calcularCustoAlqueire(), 0.1);
        
        correcaoPotassio = new CorrecaoPotassio(3.0, solo, FontesPotassio.SULFATO_POTASSIO_MAGNESIO, 2500.00);
-       Assert.assertEquals(2969.51, correcaoPotassio.custoAlqueirePotassio(), 0.1);
+       Assert.assertEquals(2969.51, correcaoPotassio.calcularCustoAlqueire(), 0.1);
     }
     
 }

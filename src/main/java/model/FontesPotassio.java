@@ -9,40 +9,43 @@ package model;
  *
  * @author Isabela Nunes
  */
-public enum FontesPotassio {
+public enum FontesPotassio implements FontesElementos {
     CLORETO_POTASSIO{
-        public double valorFontePotassio() {
+        @Override
+        public double valorFonte() {
             return 58.0;
         }
         
-        public ItemCorrecaoFornece[] correcaoPotassioFornece(CorrecaoPotassio correcaoPotassio){
+        @Override
+        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
             return null;
         }
     },
     SULFATO_POTASSIO{
-        public double valorFontePotassio() {
+        @Override
+        public double valorFonte() {
             return 52.0;
         }
         
-        public ItemCorrecaoFornece[] correcaoPotassioFornece(CorrecaoPotassio correcaoPotassio){
+        @Override
+        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
             ItemCorrecaoFornece[] itemCorrecaoFornece = new ItemCorrecaoFornece[1];
-            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoPotassio.quantidadeAplicarPotassio()*0.17, Nutrientes.ENXOFRE);
+            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.17, Nutrientes.ENXOFRE);
             return itemCorrecaoFornece;
         }
     },
     SULFATO_POTASSIO_MAGNESIO{
-        public double valorFontePotassio() {
+        @Override
+        public double valorFonte() {
             return 22.0;
         }
         
-        public ItemCorrecaoFornece[] correcaoPotassioFornece(CorrecaoPotassio correcaoPotassio){
+        @Override
+        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
             ItemCorrecaoFornece[] itemCorrecaoFornece = new ItemCorrecaoFornece[2];
-            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoPotassio.quantidadeAplicarPotassio()*0.22, Nutrientes.ENXOFRE);
-            itemCorrecaoFornece[1] = new ItemCorrecaoFornece(correcaoPotassio.quantidadeAplicarPotassio()*0.18, Nutrientes.MAGNESIO);
+            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.22, Nutrientes.ENXOFRE);
+            itemCorrecaoFornece[1] = new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.18, Nutrientes.MAGNESIO);
             return itemCorrecaoFornece;
         }
-    };
-    
-    public abstract double valorFontePotassio();
-    public abstract ItemCorrecaoFornece[] correcaoPotassioFornece(CorrecaoPotassio correcaoPotassio);
+    };    
 }
