@@ -23,11 +23,10 @@ ESTRUTURAS CONDICIONAIS:      5
 </pre>
 <h2> III. Quantidade de Pontos a Realizar Melhoras </h2>
 <ul>
-<li> Revisar a clareza dos nomes das variáveis, métodose classes; </li>
-<li> Analisar a viabilidade de utilização de <b>herança</b> e <b>polimorfismo</b> para as classes FontesPotassio e FontesFosforo, que implementam métodos semelhantes; </li>
-<li> Analisar classes e variáveis que devem ser <b><i> final;</i></b> </li>
-<li> Analisar a necessidade da classe ItemCorrecaoFornece - viabilidade de ser uma classe interna à outra classe; </li>
-<li> Analisar a viabilidade de reduzir a quantidade de estruturas condicionais; </li>
+<li> Revisar a clareza dos nomes das variáveis, métodos e classes; </li>
+<li> Analisar a viabilidade de utilização de <b>interface</b> e <b>polimorfismo</b> para as classes que implementam métodos semelhantes ✓ </li>
+<li> Analisar classes e variáveis que devem ser <b><i> final</i></b> ✓ </li>
+<li> Analisar a viabilidade de reduzir a quantidade de estruturas condicionais ✓</li>
 </ul>
 
 <p> <b> Commit <a href="https://github.com/isabelanunes/arquitetura-software/commit/8b2491dc905284cdd6ec6ea2a9664a8e5ba810ca">8b2491d</a> </b> </p>
@@ -61,3 +60,33 @@ SUM:                            24            144            111           1071
 ESTRUTURAS CONDICIONAIS:      0
 --------------------------------
 </pre>
+
+<p> <b> Commit <a href="https://github.com/isabelanunes/arquitetura-software/commit/c828f7e19bd5a9fe8d7cbc3c26ef1f7c6146172c">c828f7e</a> </b> </p>
+<ul>
+  <li> Alteração da designiação e atribuição das variáveis de retorno do método "correcaoFornece()" </li>
+  <p>Com essa mudança foi possível reduzir 3 linhas de código para apenas uma, que faz a atribuição do array diretamente na linha de retorno.</p>
+  <li> Exclusão das variáveis auxiliares dos métodos de teste </li>
+  <p>As variáveis auxiliares foram instanciadas diretamente no método do assertEquals. Foram mantidas somente as variáveis fixas, utilizadas mais de uma vez na classe de teste. 
+  <br> Essa alteração otimizou o código, excluindo a etapa de designação com a criação e instaciação de variáveis ao longo do código. </p>
+</ul>
+<p> <b> Métricas </b> </p>
+<pre>
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+Java                            13            135            110            529
+XML                              9              0              0            397
+Markdown                         1              1              0             30
+Maven                            1              7              1             21
+-------------------------------------------------------------------------------
+SUM:                            24            143            111            977
+-------------------------------------------------------------------------------
+</pre>
+
+<pre>
+--------------------------------
+ESTRUTURAS CONDICIONAIS:      0
+--------------------------------
+</pre>
+
+<p> Como visto, as decisões tomadas ao longo do desenvolvimento desta atividade impactaram positivamente a otimização do código e, por conseguinte, a manutenabilidade do mesmo. </p
