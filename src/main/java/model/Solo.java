@@ -77,5 +77,4 @@ public class Solo {
         return moPercentual > 0 ? moPercentual / 1.72 * 10 : 0.0;
     }
 
-
 }

@@ -23,9 +23,7 @@ public class CorrecaoPotassio implements CorrecaoElemento{
     }
     
     public double participacaoPotassioAtual(){
-        double participacao = this.solo.getPotassio() / 
-               (this.solo.getCalcio() + this.solo.getMagnesio() + this.solo.getPotassio()
-                + this.solo.getAcidez())*100;
+        double participacao = this.solo.getPotassio() / (this.solo.getCalcio() + this.solo.getMagnesio() + this.solo.getPotassio() + this.solo.getAcidez())*100;
         return participacao;
     }
     
@@ -34,19 +32,13 @@ public class CorrecaoPotassio implements CorrecaoElemento{
     }
     
     public double participacaoPotassioCorrecao(){
-     if(this.participacaoPotassioDesejada > 0.001)
-            return this.participacaoPotassioDesejada;
-        else
-            return 0.0;
+        return this.participacaoPotassioDesejada > 0.001 ?  this.participacaoPotassioDesejada : 0.0;
     }
     
     @Override
     public double quantidadeAplicarElemento(){
-        double necessidadeAdicionar = this.solo.getPotassio()*
-                this.participacaoPotassioDesejada/this.participacaoPotassioAtual()
-                - this.solo.getPotassio();
-        double quantidadeAplicar = necessidadeAdicionar * 39.1 * 10 * 2 * 1.2 * 100 / 0.85 /100 *100 
-                    / this.fontePotassio.valorFonte();
+        double necessidadeAdicionar = this.solo.getPotassio()* this.participacaoPotassioDesejada/this.participacaoPotassioAtual() - this.solo.getPotassio();
+        double quantidadeAplicar = necessidadeAdicionar * 39.1 * 10 * 2 * 1.2 * 100 / 0.85 /100 *100 / this.fontePotassio.valorFonte();
         return necessidadeAdicionar > 0.01 ? quantidadeAplicar : 0.0;
     }
     

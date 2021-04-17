@@ -10,8 +10,8 @@ package model;
  * @author Isabela Nunes
  */
 public class ItemCorrecaoFornece {
-    private double valor;
-    private Nutrientes descricao_item;
+    private final double valor;
+    private final Nutrientes descricao_item;
 
     public ItemCorrecaoFornece(double valor, Nutrientes descricao_item) {
         this.valor = valor;

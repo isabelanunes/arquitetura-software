@@ -13,7 +13,7 @@ import java.text.DecimalFormat;
  */
 public class CorrecaoFosforo implements CorrecaoElemento{
     private final double teorFosforoAtingir;
-    private FontesFosforo fonteFosforo;
+    private final FontesFosforo fonteFosforo;
     private final double eficienciaFosforo;
     private final double valorFonteFosforo;
     private final Solo solo;
@@ -29,8 +29,7 @@ public class CorrecaoFosforo implements CorrecaoElemento{
     @Override
     public double quantidadeAplicarElemento(){
         double necessidadeAdicionar = this.teorFosforoAtingir - this.solo.getFosforo();
-        double quantidadeAplicar = (necessidadeAdicionar * 2 * 2.29) /
-                (this.eficienciaFosforo / 100) * (100 / this.fonteFosforo.valorFonte());
+        double quantidadeAplicar = (necessidadeAdicionar * 2 * 2.29) / (this.eficienciaFosforo / 100) * (100 / this.fonteFosforo.valorFonte());
         return necessidadeAdicionar > 0.01 ? quantidadeAplicar : 0.0;
     }
     

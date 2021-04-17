@@ -1,4 +1,3 @@
-import model.Nutrientes;
 import model.Solo;
 import model.TexturaSolo;
 import org.junit.Assert;
@@ -32,32 +31,27 @@ public class SoloTest{
     
     @Test
     public void testeGetSCmol() {
-        Solo solo = new Solo(8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35);
-        Assert.assertEquals(7.54, solo.getSCmol(), 0.0);
+        Assert.assertEquals(7.54, new Solo(8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35).getSCmol(), 0.0);
     }
 
     @Test
     public void testeGetCTCCmol() {
-        Solo solo = new Solo(8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35);
-        Assert.assertEquals(12.89, solo.getCTCCmol(), 0.0);    
+        Assert.assertEquals(12.89, new Solo(8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35).getCTCCmol(), 0.0);    
     }
 
     @Test
     public void testeGetVPercentual() {
-        Solo solo = new Solo(8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35);
-        Assert.assertEquals(58.49, solo.getVPercentual(), 0.1);
+        Assert.assertEquals(58.49, new Solo(8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35).getVPercentual(), 0.1);
     }
     
     @Test
     public void testeGetMOPercentual() {
-        Solo solo = new Solo(8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35);
-        Assert.assertEquals(3.07, solo.getMOPercentual(30.7), 0.1);
+        Assert.assertEquals(3.07, new Solo(8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35).getMOPercentual(30.7), 0.1);
     }
     
     @Test
     public void testeGetCarbono() {
-        Solo solo = new Solo(8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35);
-        Assert.assertEquals(17.84, solo.getCarbono(3.07), 0.1);
+        Assert.assertEquals(17.84, new Solo(8.59, 0.15, 5.76, 1.63, 3.67, 0.0, 5.35).getCarbono(3.07), 0.1);
     }
 }
     

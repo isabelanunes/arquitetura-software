@@ -29,9 +29,7 @@ public enum FontesPotassio implements FontesElementos {
         
         @Override
         public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
-            ItemCorrecaoFornece[] itemCorrecaoFornece = new ItemCorrecaoFornece[1];
-            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.17, Nutrientes.ENXOFRE);
-            return itemCorrecaoFornece;
+            return new ItemCorrecaoFornece[]{new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.17, Nutrientes.ENXOFRE)};
         }
     },
     SULFATO_POTASSIO_MAGNESIO{
@@ -42,10 +40,8 @@ public enum FontesPotassio implements FontesElementos {
         
         @Override
         public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
-            ItemCorrecaoFornece[] itemCorrecaoFornece = new ItemCorrecaoFornece[2];
-            itemCorrecaoFornece[0] = new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.22, Nutrientes.ENXOFRE);
-            itemCorrecaoFornece[1] = new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.18, Nutrientes.MAGNESIO);
-            return itemCorrecaoFornece;
+            return new ItemCorrecaoFornece[] {new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.22, Nutrientes.ENXOFRE),
+                   new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.18, Nutrientes.MAGNESIO)};
         }
     };    
 }
