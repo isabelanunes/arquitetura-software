@@ -10,6 +10,8 @@ package model;
  * @author Isabela Nunes
  */
 public interface FontesElementos {
-    public double valorFonte();
-    public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento);
+    public double getValorFonte();
+    public double[] getItensValores();
+    public Nutrientes[] getItensNutrientes();
+
 }

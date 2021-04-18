@@ -9,17 +9,12 @@ package model;
  *
  * @author Isabela Nunes
  */
-public class CorrecaoPotassio implements CorrecaoElemento{
+public class CorrecaoPotassio extends CorrecaoElemento{
     private final double participacaoPotassioDesejada;
-    private final Solo solo;
-    private final FontesPotassio fontePotassio;
-    private final double valorFontePotassio;
-
-    public CorrecaoPotassio(double participacaoPotassioDesejada, Solo solo, FontesPotassio fontePotassio, double valorFontePotassio) {
+    
+    public CorrecaoPotassio(double valorFonteElemento, Solo solo, FontesElementos fonte, double participacaoPotassioDesejada) {
+        super(valorFonteElemento, solo, fonte);
         this.participacaoPotassioDesejada = participacaoPotassioDesejada;
-        this.solo = solo;
-        this.fontePotassio = fontePotassio;
-        this.valorFontePotassio = valorFontePotassio;
     }
     
     public double participacaoPotassioAtual(){
@@ -37,20 +32,11 @@ public class CorrecaoPotassio implements CorrecaoElemento{
     
     @Override
     public double quantidadeAplicarElemento(){
-        double necessidadeAdicionar = this.solo.getPotassio()* this.participacaoPotassioDesejada/this.participacaoPotassioAtual() - this.solo.getPotassio();
-        double quantidadeAplicar = necessidadeAdicionar * 39.1 * 10 * 2 * 1.2 * 100 / 0.85 /100 *100 / this.fontePotassio.valorFonte();
+        double necessidadeAdicionar = solo.getPotassio()* this.participacaoPotassioDesejada/this.participacaoPotassioAtual() - this.solo.getPotassio();
+        double quantidadeAplicar = necessidadeAdicionar * 110400 / fonte.getValorFonte();
         return necessidadeAdicionar > 0.01 ? quantidadeAplicar : 0.0;
     }
     
-    @Override
-    public ItemCorrecaoFornece[] correcaoElemento(){
-        return this.fontePotassio.correcaoFornece(this);
-    }
-        
-    @Override
-    public double calcularCustoAlqueire(){
-        return (this.valorFontePotassio * this.quantidadeAplicarElemento()/1000);
-    }
     
 }
 

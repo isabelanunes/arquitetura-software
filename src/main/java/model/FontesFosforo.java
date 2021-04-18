@@ -10,140 +10,41 @@ package model;
  * @author Isabela Nunes
  */
 public enum FontesFosforo implements FontesElementos{
-    SUPERFOSFATO_SIMPLES{
-        @Override
-        public double valorFonte() {
-            return 18.0;
-        }
-        
-        @Override
-        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
-            return new ItemCorrecaoFornece[] {new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.28, Nutrientes.CALCIO),
-                   new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.1, Nutrientes.ENXOFRE)};
-        }
-        
-    },
-    SUPERFOSFATO_TRIPLO{
-        @Override
-        public double valorFonte() {
-            return 41.0;
-        }
-        
-        @Override
-        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
-            return new ItemCorrecaoFornece[] {new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.2, Nutrientes.CALCIO)};
-        }
-    },
-    MAP{
-        @Override
-        public double valorFonte() {
-            return 48.0;
-        }
-        
-        @Override
-        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
-            return new ItemCorrecaoFornece[] {new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.09, Nutrientes.NITROGENIO)};
-        }
-    },
-    DAP{
-        @Override
-        public double valorFonte() {
-            return 45.0;
-        }
-        
-        @Override
-        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
-            return new ItemCorrecaoFornece[] { new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.16, Nutrientes.NITROGENIO)};
-        }
-    },
-    YOORIN{
-        @Override
-        public double valorFonte() {
-            return 18.0;
-        }
-        
-        @Override
-        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
-            return new ItemCorrecaoFornece[] {new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.15, Nutrientes.MAGNESIO),
-                   new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.28, Nutrientes.CALCIO)};
-        }
-    },
-    FOSFATO_ARAD{
-        @Override
-        public double valorFonte() {
-            return 33.0;
-        }
-        
-        @Override
-        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
-            return new ItemCorrecaoFornece[] {new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.52, Nutrientes.CALCIO)};
-        }
-    },
-    FOSFATO_GAFSA{
-        @Override
-        public double valorFonte() {
-            return 29.0;
-        }
-        
-        @Override
-        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
-            return new ItemCorrecaoFornece[] {new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.52, Nutrientes.CALCIO)};
-        }
-    },
-    FOSFATO_DAOUI{
-        @Override
-        public double valorFonte() {
-            return 32.0;
-        }
-        
-        @Override
-        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
-            return new ItemCorrecaoFornece[] {new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.45, Nutrientes.CALCIO)};
-        }
-    },
-    FOSF_PATOS_MINAS{
-        @Override
-        public double valorFonte() {
-            return 24.0;
-        }
-        
-        @Override
-        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
-            return  new ItemCorrecaoFornece[] {new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.28, Nutrientes.CALCIO)};
-        }
-    },
-    ESCORIA_THOMAS{
-        @Override
-        public double valorFonte() {
-            return 18.5;
-        }
-        
-        @Override
-        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
-            return new ItemCorrecaoFornece[] {new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.44, Nutrientes.CALCIO)};
-        }
-    },
-    ACIDO_FOSFORICO{
-        @Override
-        public double valorFonte() {
-            return 52.0;
-        }
-        
-        @Override
-        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
-            return new ItemCorrecaoFornece[] {new ItemCorrecaoFornece(0.0, null)};
-        }
-    },
-    MULTIF_MAGNESIANO{
-        @Override
-        public double valorFonte() {
-            return 18.0;
-        }
-        
-        @Override
-        public ItemCorrecaoFornece[] correcaoFornece(CorrecaoElemento correcaoElemento){
-            return new ItemCorrecaoFornece[]{new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.11, Nutrientes.ENXOFRE),
-                   new ItemCorrecaoFornece(correcaoElemento.quantidadeAplicarElemento()*0.18, Nutrientes.CALCIO)};
-        }
-    };
+    SUPERFOSFATO_SIMPLES(18.0, new double[] {0.28, 0.1}, new Nutrientes[] {Nutrientes.CALCIO, Nutrientes.ENXOFRE}),
+    SUPERFOSFATO_TRIPLO(41.0, new double[] {0.2, 0.0}, new Nutrientes[] {Nutrientes.CALCIO, null}),
+    MAP(48.0, new double[] {0.09, 0.0}, new Nutrientes[] {Nutrientes.NITROGENIO, null}),
+    DAP(45.0, new double[] {0.16, 0.0}, new Nutrientes[] {Nutrientes.NITROGENIO, null}),
+    YOORIN(18.0, new double[] {0.15, 0.28}, new Nutrientes[] {Nutrientes.MAGNESIO, Nutrientes.CALCIO}),
+    FOSFATO_ARAD(33.0, new double[] {0.52, 0.0}, new Nutrientes[] {Nutrientes.CALCIO, null}),
+    FOSFATO_GAFSA(29.0, new double[] {0.52, 0.0}, new Nutrientes[] {Nutrientes.CALCIO, null}),
+    FOSFATO_DAOUI(32.0, new double[] {0.45, 0.0}, new Nutrientes[] {Nutrientes.CALCIO, null}),
+    FOSF_PATOS_MINAS(24.0, new double[] {0.28, 0.0}, new Nutrientes[] {Nutrientes.CALCIO, null}),
+    ESCORIA_THOMAS(18.5, new double[] {0.44, 0.0}, new Nutrientes[] {Nutrientes.CALCIO, null}),
+    ACIDO_FOSFORICO(52.0, new double[] {0.0, 0.0}, new Nutrientes[] {null, null}),
+    MULTIF_MAGNESIANO(18.0, new double[] {0.11, 0.18}, new Nutrientes[] {Nutrientes.ENXOFRE, Nutrientes.CALCIO});
+
+    private final double valorFonte;
+    private final double itensValores[];
+    private final Nutrientes itensNutrientes[];
+
+    FontesFosforo(double valorFonte, double[] itensValores, Nutrientes[] itensNutrientes) {
+        this.valorFonte = valorFonte;
+        this.itensValores = itensValores;
+        this.itensNutrientes = itensNutrientes;
+    }
+
+    @Override
+    public double getValorFonte() {
+        return valorFonte;
+    }
+
+    @Override
+    public double[] getItensValores() {
+        return itensValores;
+    }
+
+    @Override
+    public Nutrientes[] getItensNutrientes() {
+        return itensNutrientes;
+    }
 }
